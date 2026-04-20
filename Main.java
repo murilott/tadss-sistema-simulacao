@@ -21,15 +21,15 @@ public class Main {
         Thread[] listaThreads = new Thread[numPostos];
 
         // gera clientes
-        // for (int i = 0; i < numClientes; i++) {
-        //     Cliente cliente = new Cliente(i + 1);
-        //     listaClientes.add(cliente);
-        // }
+        for (int i = 0; i < numClientes; i++) {
+            Cliente cliente = new Cliente(i + 1);
+            listaClientes.add(cliente);
+        }
 
         // recebe os clientes na fila
-        // for (Cliente cliente : listaClientes) {
-        //     fila.receberCliente(cliente);
-        // }
+        for (Cliente cliente : listaClientes) {
+            fila.receberCliente(cliente);
+        }
 
         // gera postos
         for (int i = 0; i < numPostos; i++) {
@@ -56,6 +56,11 @@ public class Main {
         // gera os relatórios
         for (Posto posto : listaPostos) {
             posto.relatorio();
+        }
+
+        // gera os relatórios
+        for (Cliente cliente : listaClientes) {
+            cliente.relatorio();
         }
     }
 }

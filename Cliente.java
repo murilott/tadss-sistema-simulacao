@@ -14,6 +14,14 @@ public class Cliente implements Runnable{
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
+    public void relatorio() {
+        System.out.println("Cliente " + this.id + 
+            " | Tempo de espera/atendimento: " + tempoDeEspera.toSeconds() + 
+            " / " + tempoDeAtendimento.toSeconds() + 
+            " s"
+        );
+    }
+
     public Integer getId() {
         return id;
     }
