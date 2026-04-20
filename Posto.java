@@ -41,7 +41,7 @@ public class Posto implements Runnable {
         System.out.println("(#) Posto " + this.id + " | Atendendo cliente " + cliente.getId());
 
         // int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(30_000, 120_000);
-        int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(5_000, 10_000);
+        int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(10_000, 15_000);
 
         try {
             Thread.sleep(tempoDeAtendimento);
@@ -51,7 +51,7 @@ public class Posto implements Runnable {
 
         this.tempoTotalDeAtendimento += tempoDeAtendimento;
         cliente.setTempoDeAtendimento(tempoDeAtendimento);
-        
+
         System.out.println("(~) Posto " + this.id + " | Fim do atendimento do cliente " + cliente.getId() +
                 " (tempo de atendimento: " + tempoDeAtendimento/1000 + " s)" 
                 // + "\n"

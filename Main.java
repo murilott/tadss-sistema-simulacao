@@ -20,47 +20,114 @@ public class Main {
         List<Cliente> listaClientes = new ArrayList<>();
         Thread[] listaThreads = new Thread[numPostos];
 
-        // gera clientes
-        for (int i = 0; i < numClientes; i++) {
-            Cliente cliente = new Cliente(i + 1);
-            listaClientes.add(cliente);
-        }
+        // cria clientes
+        ScheduledExecutorService clienteProdutor = Executors.newSingleThreadScheduledExecutor();
 
-        // recebe os clientes na fila
-        for (Cliente cliente : listaClientes) {
-            fila.receberCliente(cliente);
-        }
+        Runnable receberCliente = new Runnable() {
+            @Override
+            public void run() {
+                Cliente cliente = new Cliente(listaClientes.size() + 1);
+                listaClientes.add(cliente);
+                fila.receberCliente(cliente);
 
-        // gera postos
+                int delay = ThreadLocalRandom.current().nextInt(2, 10);
+
+                clienteProdutor.schedule(this, delay, TimeUnit.SECONDS);
+            }
+        };
+
+        clienteProdutor.schedule(receberCliente, 0, TimeUnit.SECONDS);
+
+        // cria e dá start nos postos
+        ScheduledExecutorService postoConsumidor = Executors.newScheduledThreadPool(3);
+
         for (int i = 0; i < numPostos; i++) {
             Posto posto = new Posto(i + 1, fila);
             listaPostos.add(posto);
+
+            postoConsumidor.scheduleAtFixedRate(
+                    posto,
+                    0,
+                    1,
+                    TimeUnit.SECONDS);
         }
 
-        // inicia os postos
-        for (int i = 0; i < numPostos; i++) {
-            listaThreads[i] = Thread.ofPlatform()
-                    .name("Posto-" + listaPostos.get(i).getId())
-                    .start(listaPostos.get(i));
-        }
+        ScheduledExecutorService controle = Executors.newSingleThreadScheduledExecutor();
 
-        // termina os postos
-        for (Thread t : listaThreads) {
-            try {
-                t.join();
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-            }
-        }
+        controle.schedule(() -> {
+            System.out.println("(!) Encerrando expediente...");
 
-        // gera os relatórios
+            clienteProdutor.shutdown();
+            postoConsumidor.shutdown();
+            controle.shutdown();
+        }, 60, TimeUnit.SECONDS);
+
         for (Posto posto : listaPostos) {
             posto.relatorio();
         }
 
-        // gera os relatórios
         for (Cliente cliente : listaClientes) {
             cliente.relatorio();
         }
+
+        // Runnable receberCliente = new Runnable() {
+        // @Override
+        // public void run() {
+        // Cliente cliente = new Cliente(listaClientes.size() + 1);
+        // listaClientes.add(cliente);
+        // fila.receberCliente(cliente);
+
+        // int delay = ThreadLocalRandom.current().nextInt(5, 31);
+
+        // scheduler.schedule(this, delay, TimeUnit.SECONDS);
+        // }
+        // };
+
+        // scheduler.schedule(receberCliente, 0, TimeUnit.SECONDS);
+
+        /*
+         * // gera clientes
+         * for (int i = 0; i < numClientes; i++) {
+         * Cliente cliente = new Cliente(i + 1);
+         * listaClientes.add(cliente);
+         * }
+         * 
+         * // recebe os clientes na fila
+         * for (Cliente cliente : listaClientes) {
+         * fila.receberCliente(cliente);
+         * }
+         * 
+         * // gera postos
+         * for (int i = 0; i < numPostos; i++) {
+         * Posto posto = new Posto(i + 1, fila);
+         * listaPostos.add(posto);
+         * }
+         * 
+         * // inicia os postos
+         * for (int i = 0; i < numPostos; i++) {
+         * listaThreads[i] = Thread.ofPlatform()
+         * .name("Posto-" + listaPostos.get(i).getId())
+         * .start(listaPostos.get(i));
+         * }
+         * 
+         * // termina os postos
+         * for (Thread t : listaThreads) {
+         * try {
+         * t.join();
+         * } catch (InterruptedException e) {
+         * Thread.currentThread().interrupt();
+         * }
+         * }
+         * 
+         * // gera os relatórios
+         * for (Posto posto : listaPostos) {
+         * posto.relatorio();
+         * }
+         * 
+         * // gera os relatórios
+         * for (Cliente cliente : listaClientes) {
+         * cliente.relatorio();
+         * }
+         */
     }
 }
