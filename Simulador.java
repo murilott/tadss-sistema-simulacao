@@ -57,7 +57,7 @@ public class Simulador {
         ScheduledExecutorService controle = Executors.newSingleThreadScheduledExecutor();
 
         controle.schedule(() -> {
-            System.out.println("(!) Encerrando expediente...");
+            System.out.println("(!) Encerrando expediente do simulador " + this.id + "...");
             clienteProdutor.shutdown();
 
             try {

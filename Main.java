@@ -14,15 +14,17 @@ public class Main {
 
     public static final int duracaoTotal = 2; // minutos // 120
 
-    public static final boolean logs = false;
+    // Habilite para mostrar em tempo real as interações
+    public static final boolean logs = false; 
 
     public static void main(String[] args) throws InterruptedException {
 
+        int numPostos = 5;
         ExecutorService pool = Executors.newFixedThreadPool(4);
 
         List<Future<Resultados>> futures = new ArrayList<>();
 
-        for (int n = 1; n <= 10; n++) {
+        for (int n = 1; n <= numPostos; n++) {
             Simulador sim = new Simulador(n, n);
 
             Future<Resultados> future = pool.submit(() -> sim.executar());
@@ -47,6 +49,8 @@ public class Main {
         }
 
         pool.shutdown();
+
+        Relatorio.exportar(resultados);
 
         // List<Resultados> resultados = new ArrayList<>();
 

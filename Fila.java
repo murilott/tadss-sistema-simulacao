@@ -1,11 +1,8 @@
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Fila {
     private Deque<Cliente> clientes = new LinkedList<>();
-    private Long tempoDeEspera;
 
     public synchronized void receberCliente(Cliente cliente) {
         clientes.addLast(cliente);

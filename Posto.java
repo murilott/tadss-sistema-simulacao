@@ -1,9 +1,4 @@
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-
-import exercicio06.Prato;
 
 public class Posto implements Runnable {
     private Integer id;
@@ -76,5 +71,21 @@ public class Posto implements Runnable {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getClientesAtendidos() {
+        return clientesAtendidos;
+    }
+
+    public void setClientesAtendidos(Integer clientesAtendidos) {
+        this.clientesAtendidos = clientesAtendidos;
+    }
+
+    public Integer getTempoTotalDeAtendimento() {
+        return tempoTotalDeAtendimento;
+    }
+
+    public void setTempoTotalDeAtendimento(Integer tempoTotalDeAtendimento) {
+        this.tempoTotalDeAtendimento = tempoTotalDeAtendimento;
     }
 }

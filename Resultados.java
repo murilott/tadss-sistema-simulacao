@@ -30,4 +30,28 @@ public class Resultados {
 
         System.out.println("===============");
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
+    }
+
+    public List<Posto> getPostos() {
+        return postos;
+    }
+
+    public void setPostos(List<Posto> postos) {
+        this.postos = postos;
+    }
 }
