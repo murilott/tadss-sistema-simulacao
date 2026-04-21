@@ -6,25 +6,34 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class Main {
-    public static final int chegadaInicioClientes = 83; // 5
-    public static final int chegadaFimClientes = 833; // 50
+    // Definição dos tempos (tempo rápido - tempo normal)
+    public static final int chegadaInicioClientes = 83; // 83 ms - 5_000 ms (s)
+    public static final int chegadaFimClientes = 833; // 833 ms - 50_000 ms (s)
 
-    public static final int atendimentoInicio = 500; // 30_000
-    public static final int atendimentoFim = 2_000; // 120_000
+    public static final int atendimentoInicio = 500; // 500 ms - 30_000 ms (s)
+    public static final int atendimentoFim = 2_000; // 2_000 ms - 120_000 ms (s)
 
-    public static final int duracaoTotal = 2; // minutos // 120
+    public static final int duracaoTotal = 120; // 2 m - 120 m
 
-    // Habilite para mostrar em tempo real as interações
+    // Habilite para mostrar em tempo real as interações dos postos e filas
     public static final boolean logs = false; 
 
     public static void main(String[] args) throws InterruptedException {
 
-        int numPostos = 5;
-        ExecutorService pool = Executors.newFixedThreadPool(4);
+        // Defina o número de simulações
+        int numSimulacoes = 6;
+
+        ExecutorService pool = Executors.newFixedThreadPool(numSimulacoes);
 
         List<Future<Resultados>> futures = new ArrayList<>();
 
-        for (int n = 1; n <= numPostos; n++) {
+        System.out.println("(" + java.time.LocalDateTime.now() + ")" + 
+            "Iniciando " + numSimulacoes + 
+            " simulações para o tempo total de " + duracaoTotal + " minutos."
+        );
+
+        // Realiza as simulações em paralelo
+        for (int n = 1; n <= numSimulacoes; n++) {
             Simulador sim = new Simulador(n, n);
 
             Future<Resultados> future = pool.submit(() -> sim.executar());
@@ -34,6 +43,7 @@ public class Main {
 
         List<Resultados> resultados = new ArrayList<>();
 
+        // Obtem os resultados
         for (Future<Resultados> future : futures) {
             try {
                 Resultados res = future.get();
@@ -52,17 +62,6 @@ public class Main {
 
         Relatorio.exportar(resultados);
 
-        // List<Resultados> resultados = new ArrayList<>();
-
-        // for (int n = 1; n <= 10; n++) {
-
-        //     Simulador sim = new Simulador(n, n);
-
-        //     Resultados res = sim.executar();
-
-        //     resultados.add(res);
-
-        //     res.relatorioPostos();
-        // }
+        System.out.println("Fim do programa.");
     }
 }

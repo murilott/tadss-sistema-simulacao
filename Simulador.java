@@ -16,11 +16,15 @@ public class Simulador {
 
     public Resultados executar() throws InterruptedException {
         // Definição das variáveis iniciais
-
         Fila fila = new Fila();
 
         List<Posto> listaPostos = new ArrayList<>();
         List<Cliente> listaClientes = new ArrayList<>();
+
+        System.out.println("(" + java.time.LocalDateTime.now() + ")" +
+                "Iniciando simulador " + this.id +
+                " com " + this.numeroPostos +
+                " postos de atendimento.");
 
         // Scheduler que cria clientes
         ScheduledExecutorService clienteProdutor = Executors.newSingleThreadScheduledExecutor();
@@ -38,9 +42,9 @@ public class Simulador {
             }
         };
 
+        // Scheduler que cria e dá start nos postos
         clienteProdutor.schedule(receberCliente, 0, TimeUnit.SECONDS);
 
-        // Scheduler que cria e dá start nos postos
         ScheduledExecutorService postoConsumidor = Executors.newScheduledThreadPool(numeroPostos);
 
         for (int i = 0; i < numeroPostos; i++) {
@@ -54,6 +58,27 @@ public class Simulador {
                     TimeUnit.SECONDS);
         }
 
+        // Scheduler que executa a cada 30 minutos para mostrar o status atual do
+        // simulador
+        ScheduledExecutorService schedulerTemporizador = Executors.newScheduledThreadPool(1);
+
+        Runnable tarefa = () -> {
+            System.out.println("(" + java.time.LocalDateTime.now() + ")" +
+                    " Simulador " + this.id + " | Status atual: " +
+                    fila.tamanho() + " clientes na fila, " +
+                    listaClientes.size() + " total de clientes criados, " +
+                    listaPostos.size() + " postos de atendimento.");
+
+            for (Posto posto : listaPostos) {
+                posto.relatorio();
+            }
+
+            System.out.println("==== /// ====");
+        };
+
+        schedulerTemporizador.scheduleAtFixedRate(tarefa, 30, 30, TimeUnit.MINUTES);
+
+        // Scheduler de controle e encerramento do simulador
         ScheduledExecutorService controle = Executors.newSingleThreadScheduledExecutor();
 
         controle.schedule(() -> {
@@ -64,19 +89,29 @@ public class Simulador {
                 clienteProdutor.awaitTermination(1, TimeUnit.MINUTES);
 
                 while (fila.temCliente()) {
-                    Thread.sleep(100);
+                    Thread.sleep(1000);
                 }
 
                 postoConsumidor.shutdown();
                 postoConsumidor.awaitTermination(1, TimeUnit.MINUTES);
+
+                schedulerTemporizador.shutdownNow();
+                controle.shutdownNow();
 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
             }
         }, Main.duracaoTotal, TimeUnit.MINUTES);
 
-        clienteProdutor.awaitTermination(2, TimeUnit.HOURS);
-        postoConsumidor.awaitTermination(2, TimeUnit.HOURS);
+        // Aguarda terminar completamente
+        boolean terminou = controle.awaitTermination(Main.duracaoTotal + 2, TimeUnit.MINUTES);
+
+        if (!terminou) {
+            System.out.println("Forçando encerramento do simulador " + this.id);
+            controle.shutdownNow();
+        }
+
+        System.out.println("Simulador " + this.id + " FINALIZADO");
 
         return new Resultados(id, listaClientes, listaPostos);
     }
