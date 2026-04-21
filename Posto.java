@@ -19,6 +19,7 @@ public class Posto implements Runnable {
         this.filaDeEspera = filaDeEspera;
 
         this.estaAtendendo = false;
+        
         this.clientesAtendidos = 0;
         this.tempoTotalDeAtendimento = 0;
     }
@@ -40,8 +41,8 @@ public class Posto implements Runnable {
     public synchronized void atenderCliente(Cliente cliente) {
         System.out.println("(#) Posto " + this.id + " | Atendendo cliente " + cliente.getId());
 
-        // int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(30_000, 120_000);
-        int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(10_000, 15_000);
+        int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(Main.atendimentoInicio, Main.atendimentoFim);
+        // int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(10_000, 15_000);
 
         try {
             Thread.sleep(tempoDeAtendimento);

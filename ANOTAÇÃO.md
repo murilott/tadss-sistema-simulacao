@@ -37,7 +37,7 @@ Para cada cenário simulado, deverão ser extraídas e discutidas as seguintes m
 
     Vazão (Throughput): Volume total de clientes atendidos no período. // OK
 
-    Tempos de Resposta: Identificação dos tempos máximos de espera e de atendimento. // QUASE OK
+    Tempos de Resposta: Identificação dos tempos máximos de espera e de atendimento. // OK
 
     Tempo de Ciclo (Lead Time): Média do tempo total de permanência do cliente no sistema (entrada à saída).
 

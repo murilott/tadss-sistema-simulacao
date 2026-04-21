@@ -7,6 +7,9 @@ public class Cliente implements Runnable{
 
     public Cliente(Integer id) {
         this.id = id;
+
+        this.tempoDeEspera = Duration.ZERO;
+        this.tempoDeAtendimento = Duration.ZERO;
     }
 
     @Override

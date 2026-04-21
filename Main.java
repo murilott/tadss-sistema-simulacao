@@ -5,11 +5,17 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
-import exercicio06.Secador;
-
 public class Main {
+    public static final int chegadaInicioClientes = 83; // 5
+    public static final int chegadaFimClientes = 833; // 50
+
+    public static final int atendimentoInicio = 500; // 30_000
+    public static final int atendimentoFim = 2_000; // 120_000
+
+    public static final int duracaoTotal = 2; // minutos // 120
 
     public static void main(String[] args) throws InterruptedException {
+
         // definição dos tamanhos
 
         Fila fila = new Fila();
@@ -30,9 +36,9 @@ public class Main {
                 listaClientes.add(cliente);
                 fila.receberCliente(cliente);
 
-                int delay = ThreadLocalRandom.current().nextInt(2, 10);
+                int delay = ThreadLocalRandom.current().nextInt(chegadaInicioClientes, chegadaFimClientes);
 
-                clienteProdutor.schedule(this, delay, TimeUnit.SECONDS);
+                clienteProdutor.schedule(this, delay, TimeUnit.MILLISECONDS);
             }
         };
 
@@ -56,78 +62,30 @@ public class Main {
 
         controle.schedule(() -> {
             System.out.println("(!) Encerrando expediente...");
-
             clienteProdutor.shutdown();
-            postoConsumidor.shutdown();
-            controle.shutdown();
-        }, 60, TimeUnit.SECONDS);
 
-        for (Posto posto : listaPostos) {
-            posto.relatorio();
-        }
+            try {
+                clienteProdutor.awaitTermination(1, TimeUnit.MINUTES);
 
-        for (Cliente cliente : listaClientes) {
-            cliente.relatorio();
-        }
+                while (fila.temCliente()) {
+                    Thread.sleep(100);
+                }
 
-        // Runnable receberCliente = new Runnable() {
-        // @Override
-        // public void run() {
-        // Cliente cliente = new Cliente(listaClientes.size() + 1);
-        // listaClientes.add(cliente);
-        // fila.receberCliente(cliente);
+                postoConsumidor.shutdown();
+                postoConsumidor.awaitTermination(1, TimeUnit.MINUTES);
 
-        // int delay = ThreadLocalRandom.current().nextInt(5, 31);
+                for (Posto posto : listaPostos) {
+                    posto.relatorio();
+                }
 
-        // scheduler.schedule(this, delay, TimeUnit.SECONDS);
-        // }
-        // };
+                for (Cliente cliente : listaClientes) {
+                    cliente.relatorio();
+                }
 
-        // scheduler.schedule(receberCliente, 0, TimeUnit.SECONDS);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
 
-        /*
-         * // gera clientes
-         * for (int i = 0; i < numClientes; i++) {
-         * Cliente cliente = new Cliente(i + 1);
-         * listaClientes.add(cliente);
-         * }
-         * 
-         * // recebe os clientes na fila
-         * for (Cliente cliente : listaClientes) {
-         * fila.receberCliente(cliente);
-         * }
-         * 
-         * // gera postos
-         * for (int i = 0; i < numPostos; i++) {
-         * Posto posto = new Posto(i + 1, fila);
-         * listaPostos.add(posto);
-         * }
-         * 
-         * // inicia os postos
-         * for (int i = 0; i < numPostos; i++) {
-         * listaThreads[i] = Thread.ofPlatform()
-         * .name("Posto-" + listaPostos.get(i).getId())
-         * .start(listaPostos.get(i));
-         * }
-         * 
-         * // termina os postos
-         * for (Thread t : listaThreads) {
-         * try {
-         * t.join();
-         * } catch (InterruptedException e) {
-         * Thread.currentThread().interrupt();
-         * }
-         * }
-         * 
-         * // gera os relatórios
-         * for (Posto posto : listaPostos) {
-         * posto.relatorio();
-         * }
-         * 
-         * // gera os relatórios
-         * for (Cliente cliente : listaClientes) {
-         * cliente.relatorio();
-         * }
-         */
+        }, duracaoTotal, TimeUnit.MINUTES);
     }
 }
