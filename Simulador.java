@@ -104,7 +104,7 @@ public class Simulador {
         }, Main.duracaoTotal, TimeUnit.MINUTES);
 
         // Aguarda terminar completamente
-        boolean terminou = controle.awaitTermination(Main.duracaoTotal + 2, TimeUnit.MINUTES);
+        boolean terminou = controle.awaitTermination(Main.duracaoTotal + 5, TimeUnit.MINUTES);
 
         if (!terminou) {
             System.out.println("Forçando encerramento do simulador " + this.id);

@@ -7,11 +7,11 @@ import java.util.concurrent.Future;
 
 public class Main {
     // Definição dos tempos (tempo rápido - tempo normal)
-    public static final int chegadaInicioClientes = 83; // 83 ms - 5_000 ms (s)
-    public static final int chegadaFimClientes = 833; // 833 ms - 50_000 ms (s)
+    public static final int chegadaInicioClientes = 5_000; // 83 ms - 5_000 ms (s)
+    public static final int chegadaFimClientes = 50_000; // 833 ms - 50_000 ms (s)
 
-    public static final int atendimentoInicio = 500; // 500 ms - 30_000 ms (s)
-    public static final int atendimentoFim = 2_000; // 2_000 ms - 120_000 ms (s)
+    public static final int atendimentoInicio = 30_000; // 500 ms - 30_000 ms (s)
+    public static final int atendimentoFim = 120_000; // 2_000 ms - 120_000 ms (s)
 
     public static final int duracaoTotal = 120; // 2 m - 120 m
 
