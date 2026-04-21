@@ -11,13 +11,13 @@ public class Fila {
         clientes.addLast(cliente);
         cliente.setTempoDeEspera(System.currentTimeMillis()); // define tempo atual para ser usado depois
         
-        System.out.println("(+) Entrou na fila o cliente " + cliente.getId());
+        if (Main.logs) System.out.println("(+) Entrou na fila o cliente " + cliente.getId());
     }
 
     public synchronized Cliente removerCliente() {
         if (clientes.isEmpty()) {
             try {
-                System.out.println("(&) Fila de espera vazia, aguardando clientes...");
+                if (Main.logs) System.out.println("(&) Fila de espera vazia, aguardando clientes...");
                 wait(10);
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -31,7 +31,7 @@ public class Fila {
 
             cliente.setTempoDeEspera(tempoDeEspera);
 
-            System.out.println("(-) Saiu da fila o cliente " + cliente.getId() + 
+            if (Main.logs) System.out.println("(-) Saiu da fila o cliente " + cliente.getId() + 
                 " (tempo de espera: " + tempoDeEspera/1000 + " s)"
             );
             

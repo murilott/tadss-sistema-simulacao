@@ -39,7 +39,7 @@ public class Posto implements Runnable {
     }
 
     public synchronized void atenderCliente(Cliente cliente) {
-        System.out.println("(#) Posto " + this.id + " | Atendendo cliente " + cliente.getId());
+        if (Main.logs) System.out.println("(#) Posto " + this.id + " | Atendendo cliente " + cliente.getId());
 
         int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(Main.atendimentoInicio, Main.atendimentoFim);
         // int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(10_000, 15_000);
@@ -52,8 +52,9 @@ public class Posto implements Runnable {
 
         this.tempoTotalDeAtendimento += tempoDeAtendimento;
         cliente.setTempoDeAtendimento(tempoDeAtendimento);
+        cliente.setPostoAtendidoId(this.id);
 
-        System.out.println("(~) Posto " + this.id + " | Fim do atendimento do cliente " + cliente.getId() +
+        if (Main.logs) System.out.println("(~) Posto " + this.id + " | Fim do atendimento do cliente " + cliente.getId() +
                 " (tempo de atendimento: " + tempoDeAtendimento/1000 + " s)" 
                 // + "\n"
             );

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.Future;
 
 public class Main {
     public static final int chegadaInicioClientes = 83; // 5
@@ -14,78 +14,51 @@ public class Main {
 
     public static final int duracaoTotal = 2; // minutos // 120
 
+    public static final boolean logs = false;
+
     public static void main(String[] args) throws InterruptedException {
 
-        // definição dos tamanhos
+        ExecutorService pool = Executors.newFixedThreadPool(4);
 
-        Fila fila = new Fila();
-        int numPostos = 3;
-        int numClientes = 8;
+        List<Future<Resultados>> futures = new ArrayList<>();
 
-        List<Posto> listaPostos = new ArrayList<>();
-        List<Cliente> listaClientes = new ArrayList<>();
-        Thread[] listaThreads = new Thread[numPostos];
+        for (int n = 1; n <= 10; n++) {
+            Simulador sim = new Simulador(n, n);
 
-        // cria clientes
-        ScheduledExecutorService clienteProdutor = Executors.newSingleThreadScheduledExecutor();
+            Future<Resultados> future = pool.submit(() -> sim.executar());
 
-        Runnable receberCliente = new Runnable() {
-            @Override
-            public void run() {
-                Cliente cliente = new Cliente(listaClientes.size() + 1);
-                listaClientes.add(cliente);
-                fila.receberCliente(cliente);
-
-                int delay = ThreadLocalRandom.current().nextInt(chegadaInicioClientes, chegadaFimClientes);
-
-                clienteProdutor.schedule(this, delay, TimeUnit.MILLISECONDS);
-            }
-        };
-
-        clienteProdutor.schedule(receberCliente, 0, TimeUnit.SECONDS);
-
-        // cria e dá start nos postos
-        ScheduledExecutorService postoConsumidor = Executors.newScheduledThreadPool(3);
-
-        for (int i = 0; i < numPostos; i++) {
-            Posto posto = new Posto(i + 1, fila);
-            listaPostos.add(posto);
-
-            postoConsumidor.scheduleAtFixedRate(
-                    posto,
-                    0,
-                    1,
-                    TimeUnit.SECONDS);
+            futures.add(future);
         }
 
-        ScheduledExecutorService controle = Executors.newSingleThreadScheduledExecutor();
+        List<Resultados> resultados = new ArrayList<>();
 
-        controle.schedule(() -> {
-            System.out.println("(!) Encerrando expediente...");
-            clienteProdutor.shutdown();
-
+        for (Future<Resultados> future : futures) {
             try {
-                clienteProdutor.awaitTermination(1, TimeUnit.MINUTES);
+                Resultados res = future.get();
+                resultados.add(res);
 
-                while (fila.temCliente()) {
-                    Thread.sleep(100);
-                }
-
-                postoConsumidor.shutdown();
-                postoConsumidor.awaitTermination(1, TimeUnit.MINUTES);
-
-                for (Posto posto : listaPostos) {
-                    posto.relatorio();
-                }
-
-                for (Cliente cliente : listaClientes) {
-                    cliente.relatorio();
-                }
+                res.relatorioPostos();
 
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
+        }
 
-        }, duracaoTotal, TimeUnit.MINUTES);
+        pool.shutdown();
+
+        // List<Resultados> resultados = new ArrayList<>();
+
+        // for (int n = 1; n <= 10; n++) {
+
+        //     Simulador sim = new Simulador(n, n);
+
+        //     Resultados res = sim.executar();
+
+        //     resultados.add(res);
+
+        //     res.relatorioPostos();
+        // }
     }
 }
