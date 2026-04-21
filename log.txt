@@ -1,0 +1,398 @@
+(2026-04-21T14:49:46.653821900)Iniciando 6 simulações para o tempo total de 120 minutos.
+(2026-04-21T14:49:46.681828)Iniciando simulador 3 com 3 postos de atendimento.
+(2026-04-21T14:49:46.682829500)Iniciando simulador 1 com 1 postos de atendimento.
+(2026-04-21T14:49:46.683828300)Iniciando simulador 2 com 2 postos de atendimento.
+(2026-04-21T14:49:46.681828)Iniciando simulador 6 com 6 postos de atendimento.
+(2026-04-21T14:49:46.681828)Iniciando simulador 5 com 5 postos de atendimento.
+(2026-04-21T14:49:46.681828)Iniciando simulador 4 com 4 postos de atendimento.
+(2026-04-21T15:19:46.724546800) Simulador 3 | Status atual: 0 clientes na fila, 64 total de clientes criados, 3 postos de atendimento.
+(2026-04-21T15:19:46.723635500) Simulador 2 | Status atual: 13 clientes na fila, 65 total de clientes criados, 2 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 25
+(2026-04-21T15:19:46.754650800) Simulador 1 | Status atual: 42 clientes na fila, 66 total de clientes criados, 1 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 23
+-> Tempo total de atendimento: 1770 s
+==== /// ====
+Posto 1
+-> Tempo total de atendimento: 1797 s
+(2026-04-21T15:19:46.794564100) Simulador 6 | Status atual: 0 clientes na fila, 66 total de clientes criados, 6 postos de atendimento.
+(2026-04-21T15:19:46.794564100) Simulador 4 | Status atual: 0 clientes na fila, 63 total de clientes criados, 4 postos de atendimento.
+Posto 1
+(2026-04-21T15:19:46.794564100) Simulador 5 | Status atual: 0 clientes na fila, 68 total de clientes criados, 5 postos de atendimento.
+-> Total de clientes atendidos: 21
+-> Tempo total de atendimento: 1662 s
+Posto 2
+-> Total de clientes atendidos: 23
+-> Tempo total de atendimento: 1572 s
+Posto 2
+-> Total de clientes atendidos: 25
+-> Tempo total de atendimento: 1711 s
+==== /// ====
+Posto 1
+-> Total de clientes atendidos: 14
+-> Tempo total de atendimento: 1135 s
+-> Total de clientes atendidos: 17
+-> Tempo total de atendimento: 1468 s
+Posto 2
+-> Total de clientes atendidos: 18
+Posto 1
+Posto 3
+-> Total de clientes atendidos: 18
+-> Tempo total de atendimento: 1362 s
+==== /// ====
+Posto 2
+-> Total de clientes atendidos: 17
+-> Tempo total de atendimento: 1222 s
+Posto 3
+-> Total de clientes atendidos: 15
+-> Tempo total de atendimento: 1523 s
+Posto 3
+-> Total de clientes atendidos: 10
+-> Tempo total de atendimento: 772 s
+Posto 4
+-> Total de clientes atendidos: 16
+-> Tempo total de atendimento: 1173 s
+==== /// ====
+-> Total de clientes atendidos: 18
+-> Tempo total de atendimento: 1186 s
+Posto 2
+-> Total de clientes atendidos: 15
+-> Tempo total de atendimento: 1223 s
+Posto 3
+-> Total de clientes atendidos: 16
+-> Tempo total de atendimento: 1207 s
+Posto 4
+-> Total de clientes atendidos: 9
+-> Tempo total de atendimento: 681 s
+Posto 5
+-> Total de clientes atendidos: 7
+-> Tempo total de atendimento: 624 s
+==== /// ====
+-> Tempo total de atendimento: 1200 s
+Posto 4
+-> Total de clientes atendidos: 11
+-> Tempo total de atendimento: 920 s
+Posto 5
+-> Total de clientes atendidos: 0
+-> Tempo total de atendimento: 74 s
+Posto 6
+-> Total de clientes atendidos: 7
+-> Tempo total de atendimento: 506 s
+==== /// ====
+(2026-04-21T15:49:46.724868400) Simulador 2 | Status atual: 36 clientes na fila, 132 total de clientes criados, 2 postos de atendimento.
+(2026-04-21T15:49:46.724868400) Simulador 3 | Status atual: 0 clientes na fila, 128 total de clientes criados, 3 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 44
+-> Tempo total de atendimento: 3171 s
+Posto 1
+Posto 2
+-> Total de clientes atendidos: 46
+-> Tempo total de atendimento: 2961 s
+-> Total de clientes atendidos: 47
+-> Tempo total de atendimento: 3538 s
+Posto 3
+-> Total de clientes atendidos: 35
+-> Tempo total de atendimento: 2659 s
+==== /// ====
+Posto 2
+-> Total de clientes atendidos: 47
+-> Tempo total de atendimento: 3467 s
+==== /// ====
+(2026-04-21T15:49:46.731732700) Simulador 1 | Status atual: 91 clientes na fila, 136 total de clientes criados, 1 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 44
+-> Tempo total de atendimento: 3563 s
+==== /// ====
+(2026-04-21T15:49:46.743737200) Simulador 6 | Status atual: 0 clientes na fila, 129 total de clientes criados, 6 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 36
+-> Tempo total de atendimento: 2462 s
+Posto 2
+-> Total de clientes atendidos: 17
+-> Tempo total de atendimento: 1335 s
+Posto 3
+-> Total de clientes atendidos: 31
+-> Tempo total de atendimento: 2535 s
+(2026-04-21T15:49:46.747739200) Simulador 5 | Status atual: 0 clientes na fila, 133 total de clientes criados, 5 postos de atendimento.
+Posto 1
+Posto 4
+-> Total de clientes atendidos: 27
+-> Tempo total de atendimento: 2270 s
+Posto 5
+-> Total de clientes atendidos: 0
+-> Tempo total de atendimento: 74 s
+-> Total de clientes atendidos: 37
+(2026-04-21T15:49:46.749739100) Simulador 4 | Status atual: 1 clientes na fila, 127 total de clientes criados, 4 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 38
+-> Tempo total de atendimento: 3020 s
+Posto 6
+-> Total de clientes atendidos: 15
+-> Tempo total de atendimento: 1090 s
+==== /// ====
+-> Tempo total de atendimento: 2543 s
+Posto 2
+-> Total de clientes atendidos: 30
+-> Tempo total de atendimento: 2480 s
+Posto 2
+Posto 3
+-> Total de clientes atendidos: 30
+-> Tempo total de atendimento: 2325 s
+-> Total de clientes atendidos: 39
+-> Tempo total de atendimento: 3031 s
+Posto 3
+-> Total de clientes atendidos: 10
+Posto 4
+-> Total de clientes atendidos: 21
+-> Tempo total de atendimento: 1437 s
+Posto 5
+-> Total de clientes atendidos: 14
+-> Tempo total de atendimento: 1143 s
+==== /// ====
+-> Tempo total de atendimento: 772 s
+Posto 4
+-> Total de clientes atendidos: 36
+-> Tempo total de atendimento: 2720 s
+==== /// ====
+(2026-04-21T16:19:46.723982900) Simulador 2 | Status atual: 51 clientes na fila, 194 total de clientes criados, 2 postos de atendimento.
+(2026-04-21T16:19:46.723982900) Simulador 3 | Status atual: 4 clientes na fila, 201 total de clientes criados, 3 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 66
+-> Tempo total de atendimento: 4912 s
+Posto 2
+-> Total de clientes atendidos: 70
+-> Tempo total de atendimento: 4678 s
+Posto 3
+-> Total de clientes atendidos: 58
+Posto 1
+-> Total de clientes atendidos: 71
+-> Tempo total de atendimento: 5377 s
+-> Tempo total de atendimento: 4536 s
+==== /// ====
+(2026-04-21T16:19:46.732850900) Simulador 1 | Status atual: 136 clientes na fila, 204 total de clientes criados, 1 postos de atendimento.
+Posto 1
+Posto 2
+-> Total de clientes atendidos: 70
+-> Tempo total de atendimento: 5258 s
+==== /// ====
+-> Total de clientes atendidos: 67
+-> Tempo total de atendimento: 5368 s
+==== /// ====
+(2026-04-21T16:19:46.743854100) Simulador 6 | Status atual: 1 clientes na fila, 199 total de clientes criados, 6 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 57
+-> Tempo total de atendimento: 3913 s
+Posto 2
+-> Total de clientes atendidos: 17
+-> Tempo total de atendimento: 1335 s
+Posto 3
+-> Total de clientes atendidos: 48
+-> Tempo total de atendimento: 3723 s
+Posto 4
+-> Total de clientes atendidos: 41
+-> Tempo total de atendimento: 3552 s
+(2026-04-21T16:19:46.748854600) Simulador 5 | Status atual: 0 clientes na fila, 191 total de clientes criados, 5 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 51
+-> Tempo total de atendimento: 3765 s
+Posto 2
+-> Total de clientes atendidos: 47
+-> Tempo total de atendimento: 3724 s
+(2026-04-21T16:19:46.750855300) Simulador 4 | Status atual: 0 clientes na fila, 190 total de clientes criados, 4 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 62
+-> Tempo total de atendimento: 4679 s
+Posto 5
+-> Total de clientes atendidos: 0
+-> Tempo total de atendimento: 74 s
+Posto 6
+-> Total de clientes atendidos: 31
+-> Tempo total de atendimento: 2376 s
+==== /// ====
+Posto 3
+-> Total de clientes atendidos: 39
+-> Tempo total de atendimento: 3030 s
+Posto 4
+Posto 2
+-> Total de clientes atendidos: 60
+-> Tempo total de atendimento: 4769 s
+Posto 3
+-> Total de clientes atendidos: 30
+-> Tempo total de atendimento: 2172 s
+Posto 5
+-> Total de clientes atendidos: 10
+-> Total de clientes atendidos: 21
+-> Tempo total de atendimento: 772 s
+Posto 4
+-> Tempo total de atendimento: 1573 s
+-> Total de clientes atendidos: 57
+==== /// ====
+-> Tempo total de atendimento: 4221 s
+==== /// ====
+(2026-04-21T16:49:46.725116100) Simulador 3 | Status atual: 2 clientes na fila, 267 total de clientes criados, 3 postos de atendimento.
+(2026-04-21T16:49:46.725116100) Simulador 2 | Status atual: 69 clientes na fila, 259 total de clientes criados, 2 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 95
+-> Tempo total de atendimento: 7146 s
+Posto 2
+-> Total de clientes atendidos: 93
+-> Tempo total de atendimento: 7129 s
+==== /// ====
+Posto 1
+-> Total de clientes atendidos: 88
+-> Tempo total de atendimento: 6730 s
+Posto 2
+-> Total de clientes atendidos: 91
+-> Tempo total de atendimento: 6504 s
+Posto 3
+-> Total de clientes atendidos: 83
+-> Tempo total de atendimento: 6257 s
+==== /// ====
+(2026-04-21T16:49:46.741981300) Simulador 1 | Status atual: 181 clientes na fila, 273 total de clientes criados, 1 postos de atendimento.
+(!) Encerrando expediente do simulador 2...
+(!) Encerrando expediente do simulador 3...
+(!) Encerrando expediente do simulador 1...
+(2026-04-21T16:49:46.743985) Simulador 6 | Status atual: 0 clientes na fila, 260 total de clientes criados, 6 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 76
+-> Tempo total de atendimento: 5414 s
+Posto 2
+-> Total de clientes atendidos: 17
+-> Tempo total de atendimento: 1335 s
+Posto 3
+-> Total de clientes atendidos: 67
+-> Tempo total de atendimento: 5176 s
+Posto 4
+-> Total de clientes atendidos: 55
+-> Tempo total de atendimento: 4785 s
+Posto 5
+-> Total de clientes atendidos: 0
+-> Tempo total de atendimento: 74 s
+Posto 6
+-> Total de clientes atendidos: 42
+-> Tempo total de atendimento: 3416 s
+==== /// ====
+(!) Encerrando expediente do simulador 6...
+Posto 1
+-> Total de clientes atendidos: 91
+-> Tempo total de atendimento: 7123 s
+==== /// ====
+(2026-04-21T16:49:46.749986200) Simulador 5 | Status atual: 0 clientes na fila, 262 total de clientes criados, 5 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 72
+-> Tempo total de atendimento: 5187 s
+Posto 2
+-> Total de clientes atendidos: 67
+(2026-04-21T16:49:46.780991600) Simulador 4 | Status atual: 0 clientes na fila, 251 total de clientes criados, 4 postos de atendimento.
+Posto 1
+-> Total de clientes atendidos: 83
+-> Tempo total de atendimento: 6291 s
+Posto 2
+-> Total de clientes atendidos: 82
+-> Tempo total de atendimento: 6424 s
+Posto 3
+-> Total de clientes atendidos: 10
+-> Tempo total de atendimento: 772 s
+Posto 4
+-> Total de clientes atendidos: 74
+-> Tempo total de atendimento: 5603 s
+==== /// ====
+(!) Encerrando expediente do simulador 5...
+(!) Encerrando expediente do simulador 4...
+-> Tempo total de atendimento: 5213 s
+Posto 3
+-> Total de clientes atendidos: 39
+-> Tempo total de atendimento: 3030 s
+Posto 4
+-> Total de clientes atendidos: 46
+-> Tempo total de atendimento: 3496 s
+Posto 5
+-> Total de clientes atendidos: 34
+-> Tempo total de atendimento: 2583 s
+==== /// ====
+Simulador 4 FINALIZADO
+Simulador 5 FINALIZADO
+Simulador 6 FINALIZADO
+Simulador 3 FINALIZADO
+Forçando encerramento do simulador 2
+Simulador 2 FINALIZADO
+Forçando encerramento do simulador 1
+Simulador 1 FINALIZADO
+Resultados dos postos da simulação 1:
+Posto 1
+-> Total de clientes atendidos: 97
+-> Tempo total de atendimento: 7496 s
+===============
+Resultados dos postos da simulação 2:
+Posto 1
+-> Total de clientes atendidos: 99
+-> Tempo total de atendimento: 7456 s
+Posto 2
+-> Total de clientes atendidos: 97
+-> Tempo total de atendimento: 7448 s
+===============
+Resultados dos postos da simulação 3:
+Posto 1
+-> Total de clientes atendidos: 90
+-> Tempo total de atendimento: 6929 s
+Posto 2
+-> Total de clientes atendidos: 93
+-> Tempo total de atendimento: 6648 s
+Posto 3
+-> Total de clientes atendidos: 85
+-> Tempo total de atendimento: 6407 s
+===============
+Resultados dos postos da simulação 4:
+Posto 1
+-> Total de clientes atendidos: 84
+-> Tempo total de atendimento: 6402 s
+Posto 2
+-> Total de clientes atendidos: 83
+-> Tempo total de atendimento: 6455 s
+Posto 3
+-> Total de clientes atendidos: 10
+-> Tempo total de atendimento: 772 s
+Posto 4
+-> Total de clientes atendidos: 75
+-> Tempo total de atendimento: 5677 s
+===============
+Resultados dos postos da simulação 5:
+Posto 1
+-> Total de clientes atendidos: 74
+-> Tempo total de atendimento: 5303 s
+Posto 2
+-> Total de clientes atendidos: 68
+-> Tempo total de atendimento: 5317 s
+Posto 3
+-> Total de clientes atendidos: 39
+-> Tempo total de atendimento: 3030 s
+Posto 4
+-> Total de clientes atendidos: 47
+-> Tempo total de atendimento: 3543 s
+Posto 5
+-> Total de clientes atendidos: 35
+-> Tempo total de atendimento: 2686 s
+===============
+Resultados dos postos da simulação 6:
+Posto 1
+-> Total de clientes atendidos: 77
+-> Tempo total de atendimento: 5473 s
+Posto 2
+-> Total de clientes atendidos: 17
+-> Tempo total de atendimento: 1335 s
+Posto 3
+-> Total de clientes atendidos: 68
+-> Tempo total de atendimento: 5238 s
+Posto 4
+-> Total de clientes atendidos: 56
+-> Tempo total de atendimento: 4889 s
+Posto 5
+-> Total de clientes atendidos: 0
+-> Tempo total de atendimento: 74 s
+Posto 6
+-> Total de clientes atendidos: 43
+-> Tempo total de atendimento: 3486 s
+===============
+Relatório gerado
+Fim do programa.
