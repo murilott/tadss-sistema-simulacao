@@ -6,13 +6,15 @@ public class Fila {
 
     public synchronized void receberCliente(Cliente cliente) {
         clientes.addLast(cliente);
-        cliente.setTempoDeEspera(System.currentTimeMillis()); // define tempo atual para ser usado depois
+
+        // Define o tempo atual para ser usado depois
+        cliente.setTempoDeEspera(System.currentTimeMillis()); 
         
         if (Main.logs) System.out.println("(+) Entrou na fila o cliente " + cliente.getId());
     }
 
     public synchronized Cliente removerCliente() {
-        if (clientes.isEmpty()) {
+        if (!temCliente()) {
             try {
                 if (Main.logs) System.out.println("(&) Fila de espera vazia, aguardando clientes...");
                 wait(10);
@@ -20,7 +22,7 @@ public class Fila {
                 Thread.currentThread().interrupt();
             }
         }
-        if (!clientes.isEmpty()) {
+        if (temCliente()) {
             Cliente cliente = clientes.pollFirst();
 
             long fim = System.currentTimeMillis();

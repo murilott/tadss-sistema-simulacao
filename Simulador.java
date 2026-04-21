@@ -38,6 +38,7 @@ public class Simulador {
 
                 int delay = ThreadLocalRandom.current().nextInt(Main.chegadaInicioClientes, Main.chegadaFimClientes);
 
+                // Agenda a próxima criação de cliente com um delay aleatório
                 clienteProdutor.schedule(this, delay, TimeUnit.MILLISECONDS);
             }
         };
@@ -58,8 +59,8 @@ public class Simulador {
                     TimeUnit.SECONDS);
         }
 
-        // Scheduler que executa a cada 30 minutos para mostrar o status atual do
-        // simulador
+        // Scheduler que executa a cada 30 minutos 
+        // para mostrar o status atual do simulador
         ScheduledExecutorService schedulerTemporizador = Executors.newScheduledThreadPool(1);
 
         Runnable tarefa = () -> {
@@ -69,9 +70,9 @@ public class Simulador {
                     listaClientes.size() + " total de clientes criados, " +
                     listaPostos.size() + " postos de atendimento.");
 
-            for (Posto posto : listaPostos) {
-                posto.relatorio();
-            }
+            // for (Posto posto : listaPostos) {
+            //     posto.relatorio();
+            // }
 
             System.out.println("==== /// ====");
         };
@@ -88,6 +89,8 @@ public class Simulador {
             try {
                 clienteProdutor.awaitTermination(1, TimeUnit.MINUTES);
 
+                // O scheduler do cliente é parado primeiro. Caso ainda há clientes na fila,
+                // o scheduler do posto continua rodando para atender os clientes restantes
                 while (fila.temCliente()) {
                     Thread.sleep(1000);
                 }
@@ -103,9 +106,11 @@ public class Simulador {
             }
         }, Main.duracaoTotal, TimeUnit.MINUTES);
 
-        // Aguarda terminar completamente
+        // o Scheduler do controle aguarda o tempo total + 5 minutos, 
+        // para garantir que o simulador seja encerrado mesmo que haja algum imprevisto
         boolean terminou = controle.awaitTermination(Main.duracaoTotal + 5, TimeUnit.MINUTES);
 
+        // Clientes que ainda estão na fila vão constar como não atendidos
         if (!terminou) {
             System.out.println("Forçando encerramento do simulador " + this.id);
             controle.shutdownNow();

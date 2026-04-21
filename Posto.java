@@ -39,6 +39,7 @@ public class Posto implements Runnable {
         int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(Main.atendimentoInicio, Main.atendimentoFim);
         // int tempoDeAtendimento = ThreadLocalRandom.current().nextInt(10_000, 15_000);
 
+        // Simula o atendimento com um delay
         try {
             Thread.sleep(tempoDeAtendimento);
         } catch (InterruptedException e) {

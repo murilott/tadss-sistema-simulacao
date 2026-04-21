@@ -9,15 +9,15 @@ public class Relatorio {
             FileWriter clientesWriter = new FileWriter("clientes.csv");
             FileWriter postosWriter = new FileWriter("postos.csv")
         ) {
-            // Headers
+            // Cria os headers
             clientesWriter.append("simulacao_id,cliente_id,tempo_espera,tempo_atendimento,posto_id\n");
             postosWriter.append("simulacao_id,posto_id,clientes_atendidos,tempo_total_atendimento\n");
 
-            // Dados
+            // Escreve os dados com base nos resultados
             for (Resultados res : resultados) {
                 int simId = res.getId();
 
-                // Clientes
+                // Escreve os dados dos clientes
                 for (Cliente c : res.getClientes()) {
                     clientesWriter.append(String.valueOf(simId)).append(",");
                     clientesWriter.append(String.valueOf(c.getId())).append(",");
@@ -26,7 +26,7 @@ public class Relatorio {
                     clientesWriter.append(String.valueOf(c.getPostoAtendidoId())).append("\n");
                 }
 
-                // Postos
+                // Escreve os dados dos postos
                 for (Posto p : res.getPostos()) {
                     postosWriter.append(String.valueOf(simId)).append(",");
                     postosWriter.append(String.valueOf(p.getId())).append(",");

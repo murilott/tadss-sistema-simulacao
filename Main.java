@@ -32,7 +32,7 @@ public class Main {
             " simulações para o tempo total de " + duracaoTotal + " minutos."
         );
 
-        // Realiza as simulações em paralelo
+        // Realiza as simulações em paralelo, guarda os resultados na Future
         for (int n = 1; n <= numSimulacoes; n++) {
             Simulador sim = new Simulador(n, n);
 
@@ -43,7 +43,7 @@ public class Main {
 
         List<Resultados> resultados = new ArrayList<>();
 
-        // Obtem os resultados
+        // Obtem os resultados da Future e realiza o relatório
         for (Future<Resultados> future : futures) {
             try {
                 Resultados res = future.get();
@@ -58,8 +58,10 @@ public class Main {
             }
         }
 
+        // Finaliza a pool de execução dos simuladores
         pool.shutdown();
 
+        // Gera os arquivos .csv na pasta raíz com base nos resultados
         Relatorio.exportar(resultados);
 
         System.out.println("Fim do programa.");

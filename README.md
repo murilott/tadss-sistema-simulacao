@@ -25,4 +25,6 @@ Ao final da execução, o projeto gera:
 - `postos.csv`, com o total de clientes atendidos e o tempo total de atendimento por posto.
 
 ## Observação
-Os tempos de chegada, atendimento, duração total da simulação e a ativação de logs podem ser ajustados diretamente em `Main.java`.
+Os tempos de chegada, atendimento, duração total da simulação e a ativação de logs podem ser ajustados diretamente em `Main.java`.  
+Os arquivos .csv estão com dados de simulações com 2 horas de duração, e o arquivo log.txt é o 
+conteúdo do terminal desta sessão. 
